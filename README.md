@@ -4,7 +4,7 @@
 ## Demo
 [Spaceship Battle v1.0 👾](https://feraiwa.github.io/starBattle)
 ### Important note: Use browser console to see the logger!
-While I integrate logger with the UI, ... check the full combat log is visible in the *browser dev tools -> console*
+While I integrate logger with the UI, ... check the combat log with the *browser dev tools -> console*
 
 ### First release: 03/04
 
