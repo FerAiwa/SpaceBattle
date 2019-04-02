@@ -1,0 +1,104 @@
+header { 
+  text-align: center;
+  color: black;
+}
+h1 {
+  font-size: 4rem;
+  margin: 0;
+  font-family: monospace;
+  text-transform: uppercase;
+}
+
+main {
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+#battlefield {
+  align-self: center;
+  border: 1px solid black;
+  background-color: black;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
+.bf-row {
+  display: flex;
+}
+
+#players {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.player-card {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  align-items: center;
+  border-bottom: 3px solid darkgoldenrod;
+  padding: 1rem;
+  
+}
+
+.player-card figure{
+  color: white;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  border-radius: 50%;
+  margin: 0;
+}
+
+  .player-card figure img {
+    border-radius: 50%;
+  }
+  .player-card div img   {
+    padding: 5px;
+  }
+
+#battlefield .bf-row div {
+  width: 150px;
+  height: 150px;
+  border: 1px solid greenyellow;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-family: sans-serif;
+  background-image: url(/media/hackapez.png);
+  background-size: 10%;
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 30px;
+}
+footer * {
+  font-size: 0.85rem;
+}
+ul {
+  list-style-type: none;
+}
+
+ul.links {
+  display: inline-flex;
+}
+
+footer li a::before {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+[href^="mailto"]::before {
+  content: '📧';
+}
+[href*="github"]::before {
+  content: url(/media/_ionicons_svg_logo-github.svg);
+}
+[href*="linkedin"]::before {
+  content: url(/media/_ionicons_svg_logo-linkedin.svg);
+}
