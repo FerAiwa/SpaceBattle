@@ -1,7 +1,7 @@
 # Spaceship Battle
 3rd challenge at Hack a BOS course! A space war simulator! 👾🎮
 
-## Demo
+## Live Demo
 [Spaceship Battle v1.0 👾](https://feraiwa.github.io/spaceBattle/)
 ### Important note: Use browser console to see the logger!
 While I integrate logger with the UI, ... check the combat log with the *browser dev tools -> console*
