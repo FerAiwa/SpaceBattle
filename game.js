@@ -2,7 +2,6 @@ import { BattleField } from "./battlefield/battlefield.js";
 import { ShipFactory } from "./spaceships/shipFactory.js";
 import { Turn } from './turn-system/turn.js';
 import * as Logger from './logger/logger.js';
-//
 import * as View from './view.js'
 
 export class Game {
@@ -24,7 +23,6 @@ export class Game {
     View.createPlayerCards(this.players)
     const winner = await this.simulateWar(this.players);
     Logger.victory(winner);
-    console.log(this.battlefield)
   }
 
   async simulateWar(players) {
