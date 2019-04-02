@@ -3,8 +3,8 @@
 
 ## Demo
 [Spaceship Battle v1.0 👾](https://feraiwa.github.io/starBattle)
-### Important note:
-Logger needs integration with the UI, do... but the full combat log is visible in the browser dev tools -> console 
+### Important note: Use browser console to see the logger!
+While I integrate logger with the UI, ... check the full combat log is visible in the *browser dev tools -> console*
 
 ### First release: 03/04
 
@@ -14,6 +14,7 @@ This is just a simple beta for a module-ending exercise.
 I blended and expanded some of them to have some extra fun while developing it. 
 I LOVE videogame design, so after I took my pencil and start drawing some ideas, I realy couldn´t stop myself)
 
+### Add-ons
 This version of the spaceship battle has some extra features like:
 * Special Units: 
   - **Medical Spaceships**: They look for ally targets and restore/boost their shield. (*Vitalis & Renovatio I*)
