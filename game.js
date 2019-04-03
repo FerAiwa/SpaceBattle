@@ -17,23 +17,31 @@ export class Game {
     this.battlefield = new BattleField(size).buildSectors();
     this.armies = this.buildPlayerArmies(this.players);
     this.armies.forEach(army => this.battlefield.populate(army));
+    console.log('Players armies are ready!', this.players)
+
+    //View initialize
+    await View.reload(this.battlefield.sectors);
+    View.createPlayerCards(this.players);
+    View.updatePlayerCards(this.players);
 
     //Resolution
-    await View.reload(this.battlefield.sectors)
-    View.createPlayerCards(this.players)
     const winner = await this.simulateWar(this.players);
     Logger.victory(winner);
   }
 
+  /** Turn resolver  */
   async simulateWar(players) {
     let turnCounter = 0;
     let lastPlayer = null;
 
     while (players.length > 1) {
+      //pre-turn setup
       turnCounter++
       const player = this.getNextPlayer(players, lastPlayer);
       Logger.showTurnIntro(turnCounter, player)
+      View.animateActivePlayer(player, this.players)
 
+      //player turn
       await Turn(player, this.battlefield, this.rules.gameSpeed);
 
       //post-turn
