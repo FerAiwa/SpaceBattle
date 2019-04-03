@@ -24,5 +24,5 @@ This version of the spaceship battle has some extra features like:
   - Resize battlefield: Same for RULES.battlefieldSize. It will always result in a square battlefield. 2n
   - Game Speed: Adjust the rhytm for the logger messages. (seconds)
 
-* 4 battleship types of diferent points.
+* 4 battleship types with increasing stats and several choices.
 * A random army generator.
