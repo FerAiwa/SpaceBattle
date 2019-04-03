@@ -1,7 +1,6 @@
 /*
  The radar allows spaceship to find enemies and allies in the sector.
 */
-
 export class Radar {
   constructor() {
     this.sector = null;
@@ -12,6 +11,7 @@ export class Radar {
     return this;
   }
 
+  //type: 'ally' || 'enemy'
   findTargets(type, player, shipId) {
     //type-finders
     const _isEnemyShip = (player) => (ship) => ship.owner.name !== player.name;

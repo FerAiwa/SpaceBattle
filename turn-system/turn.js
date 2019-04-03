@@ -33,5 +33,4 @@ export async function Turn(player, battlefield, speed) {
     unit.fire(target);
   }
 
-
 }

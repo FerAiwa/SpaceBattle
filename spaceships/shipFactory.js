@@ -1,6 +1,6 @@
 import { Spaceship } from "./spaceship.js";
 import { Vitalis } from "./vitalis.js";
-import { Radar } from "./radar/radar.js";
+import { getRandomInt } from '../utils/random.js'
 
 
 
@@ -68,9 +68,4 @@ export function ShipFactory(owner, type, name) {
         return new Spaceship("Destroyer", 7, 5, 8, 3, owner);
     }
   }
-}
-
-//UTILS
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
 }

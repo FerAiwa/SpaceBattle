@@ -1,5 +1,5 @@
 import { Sector } from "./sector.js";
-import { Spaceship } from "../spaceships/spaceship.js";
+import { getRandomInt } from '../utils/random.js'
 
 export class BattleField {
   constructor(size) {
@@ -38,8 +38,4 @@ export class BattleField {
     newSector.addBattleship(unit);
     unit.move(newSector);
   }
-}
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
 }
