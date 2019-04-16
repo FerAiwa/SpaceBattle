@@ -14,7 +14,7 @@
     Units now have a diferent color depending on the player.
     
   - **Animations :** 
-    - Active Sector: Is now marked as green background, to improve the action tracking.
+    - Active Sector: Is now marked with a green background to improve the action tracking.
     - Selection: Active units will be marked with a round colored border.
     - Unit dead: Blinks a few times before vanishing.
   - **Responsive design**
