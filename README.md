@@ -1,6 +1,6 @@
 # Spaceship Battle
 
-3rd challenge at Hack a BOS course! A space war simulator! 👾🎮
+3rd challenge at Hack a BOS bootcamp! A space war simulator! 👾🎮
 
 ## Live Demo
 
