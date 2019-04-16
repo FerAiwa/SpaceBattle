@@ -25,7 +25,7 @@
 - **Major updates**
   - **Movement:** Units now expend movement points while moving to a new sector, trying to find valid targets.
   - **View** parts are now separated from the game logic.
-  - **Medics:** Fixed a bug that caused ally units to stack infinite shield when the medic power surpass the maximun shield ammount
+  - **Medics:** Fixed a bug that caused ally units to stack infinite shield when the medic power surpass the maximum shield ammount
 
 
 
