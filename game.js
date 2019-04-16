@@ -1,7 +1,7 @@
 import { BattleField } from "./battlefield/battlefield.js";
 import { Logger } from './view/logger/logger.js'
 import { ShipFactory } from "./spaceships/shipFactory.js";
-import { PlayerCards, SectorsView, } from "./view/index";
+import { PlayerCards, SectorsView, } from "./view/index.js";
 import { Turn } from "./turn-system/turn.js";
 
 export class Game {
