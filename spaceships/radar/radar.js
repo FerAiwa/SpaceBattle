@@ -16,7 +16,8 @@ export class Radar {
     //type-finders
     const _isEnemyShip = (player) => (ship) => ship.owner.name !== player.name;
     const _isAllyShip = (player) => (ship) => {
-      return shipId !== ship.id && ship.owner.name === player.name;
+      console.log('radar looking for allies')
+      return shipId !== ship.id && ship.owner.name == player.name;
     };
     type = type === "enemy" ? _isEnemyShip(player) : _isAllyShip(player);
 

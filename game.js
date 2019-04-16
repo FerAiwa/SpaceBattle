@@ -1,14 +1,17 @@
 import { BattleField } from "./battlefield/battlefield.js";
+import { Logger } from '../view/logger/logger.js'
 import { ShipFactory } from "./spaceships/shipFactory.js";
-import { Turn } from './turn-system/turn.js';
-import * as Logger from './logger/logger.js';
-import * as View from './view.js'
+import { PlayerCards, SectorsView, } from "../view/index.js";
+import { Turn } from "./turn-system/turn.js";
 
 export class Game {
   constructor(rules, players) {
     this.rules = rules;
     this.players = players;
     this.creationId = 0;
+    //
+    const logEl = document.getElementById("logger");
+    this.logger = new Logger(logEl);
   }
 
   async play() {
@@ -17,16 +20,16 @@ export class Game {
     this.battlefield = new BattleField(size).buildSectors();
     this.armies = this.buildPlayerArmies(this.players);
     this.armies.forEach(army => this.battlefield.populate(army));
-    console.log('Players armies are ready!', this.players)
+    console.log("Players armies are ready!", this.players);
 
     //View initialize
-    await View.reload(this.battlefield.sectors);
-    View.createPlayerCards(this.players);
-    View.updatePlayerCards(this.players);
+    await SectorsView.reload(this.battlefield.sectors);
+    PlayerCards.createPlayerCards(this.players);
+    PlayerCards.updatePlayerCards(this.players);
 
     //Resolution
     const winner = await this.simulateWar(this.players);
-    Logger.victory(winner);
+    this.logger.victory(winner);
   }
 
   /** Turn resolver  */
@@ -36,44 +39,46 @@ export class Game {
 
     while (players.length > 1) {
       //pre-turn setup
-      turnCounter++
+      turnCounter++;
       const player = this.getNextPlayer(players, lastPlayer);
-      Logger.showTurnIntro(turnCounter, player)
-      View.animateActivePlayer(player, this.players)
+      this.logger.showTurnIntro(turnCounter, player);
+      PlayerCards.animateActivePlayer(player, this.players);
 
       //player turn
-      await Turn(player, this.battlefield, this.rules.gameSpeed);
+      await Turn(player, this.battlefield, this.rules.gameSpeed, this.logger);
 
       //post-turn
       players = this.getActivePlayers(players);
       lastPlayer = player;
-      await View.reload(this.battlefield.sectors);
-      View.updatePlayerCards(this.players);
+      await SectorsView.reload(this.battlefield.sectors);
+      PlayerCards.updatePlayerCards(this.players);
     }
     //last-standing player wins!
-    return players[0]
+    return players[0];
   }
 
   getActivePlayers(current) {
     const activePlayers = current.reduce((stillActive, player) => {
       if (player.isDefeated) {
-        Logger.defeat(player);
+        this.logger.defeat(player);
         return stillActive;
       } else return stillActive.push(player) && stillActive;
     }, []);
 
-    return activePlayers
+    return activePlayers;
   }
 
   getNextPlayer(players, lastPlayer) {
     let lastIndex = players.findIndex(pl => pl === lastPlayer);
-    return players[++lastIndex] || players[0]
+    return players[++lastIndex] || players[0];
   }
 
   //ARMY BUILDING
   buildPlayerArmies(players) {
     const armies = [];
+    let _id = 0;
     for (let player of players) {
+      player.id = ++_id;
       player.army = randomArmyBuilder(player, ...this.rules.typeLimit);
       player.army.forEach(ship => (ship.id = ++this.creationId));
       armies.push(player.army);

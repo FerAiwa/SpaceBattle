@@ -1,12 +1,12 @@
 export class Sector {
-  constructor(lat, lon) {
-    this.lat = lat;
+  constructor(lon, lat) {
     this.lon = lon;
+    this.lat = lat;
     this.battleships = [];
   }
 
   get coordinates() {
-    return { lat: this.lat, lon: this.lon };
+    return { lon: this.lon, lat: this.lat };
   }
 
   addBattleship(battleship) {

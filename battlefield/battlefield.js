@@ -9,11 +9,11 @@ export class BattleField {
   }
 
   buildSectors() {
-    for (let lat = 0; lat <= this.size; lat++) {
+    for (let lon = 0; lon <= this.size; lon++) {
       this.sectors.push([]);
-      for (let lon = 0; lon <= this.size; lon++) {
-        const newSector = new Sector(lat, lon);
-        this.sectors[lat].push(newSector);
+      for (let lat = 0; lat <= this.size; lat++) {
+        const newSector = new Sector(lon, lat);
+        this.sectors[lon].push(newSector);
       }
     }
     return this;
@@ -30,7 +30,7 @@ export class BattleField {
   getRandomSector() {
     const lat = getRandomInt(this.size + 1);
     const lon = getRandomInt(this.size + 1);
-    return this.sectors[lat][lon]
+    return this.sectors[lon][lat]
   }
 
   moveSpaceship(unit, oldSector, newSector) {

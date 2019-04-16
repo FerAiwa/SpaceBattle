@@ -1,61 +1,123 @@
-header { 
+body {
+  background-image: url('./media/space.jpg');
+  background-blend-mode: hard-light;
+  background-color: black;
+}
+header {
   text-align: center;
-  color: black;
+  color: white;
 }
 h1 {
-  font-size: 4rem;
+  font-size: 2rem;
   margin: 0;
   font-family: monospace;
   text-transform: uppercase;
 }
-
 main {
-  background-color: black;
+  position: relative;
+  overflow-y: hidden;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  margin: 0 auto;
 }
+
+/* BATTLEFIELD --------------------------------------------------- */
+
 #battlefield {
-  align-self: center;
-  border: 1px solid black;
-  background-color: black;
   font-size: 1.5rem;
-  padding: 2rem;
+  padding: .5rem;
 }
 .bf-row {
   display: flex;
 }
+.sector-active {
+  background-color: rgba(43, 150, 37, 0.3);
+}
+.unit--dead {
+  animation: onDamage 1s linear 0s 2 forwards;
+}
+.unit--selected {
+  animation: onSelect 1s linear 0s 2 backwards;
+}
+
+@keyframes onSelect {
+  0%   {border-color: 'red'; }
+  100% {border-color: 'transparent';  }
+}
+
+@keyframes onDamage {
+  0%   {opacity: 0; }
+  50%  {opacity: 1; }
+  100% {opacity: 0; }
+}
+
+/* LOGGER --------------------------------------------------- */
+
+#logger-wrapper {
+  position: relative;
+  overflow-Y: hidden;
+  min-height: 20vh;
+  padding: 0.75rem 1rem;
+  border-radius: 3rem 3rem 0 0;
+  border: 0;
+  border-top: 3px;
+  border-color: limegreen;
+  border-style: solid;
+  flex-basis: 100%;
+}
+#logger {
+  position: absolute;
+  bottom: 0%;
+  padding: 0.5rem 2rem;
+  color: whitesmoke;
+}
+#logger p {
+  color: #2b9926;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: .75rem;
+  margin: 0.2rem 0;
+  padding-top: 0.2rem;
+}
+#logger .logger--turn {
+  color: #c9c444;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+#logger .logger--victory {
+  font-size: 1.5rem;
+  color: #c9c444;
+}
+#logger .logger--defeat {
+  font-size: 1rem;
+  color: orangered;
+}
+#logger .logger--nomove{
+  color: slategrey;
+}
+#logger .logger--arrival {
+  color: lightblue;
+}
+
+#logger .logger--heal {
+  color: pink;
+}
+
+/* PLAYER-CARDS --------------------------------------------------- */
 
 #players {
   margin: 2rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 }
 .player-card {
   box-sizing: content-box;
   color: white;
   display: flex;
   flex-direction: row;
-  background-color: black;
+  
   align-items: center;
   border-bottom: 3px solid darkgoldenrod;
   padding: 1rem;
 }
-/* @keyframes active-player {
-  from {border-color: red;}
-  to {border-color: yellow;}
-}
- */
-.player-card.active {
-/*   border-width: 3px;
-  border-style: solid;
-  animation: active-player .25s linear .0 2 alternate; */
-}
 
-.player-card figure{
+.player-card figure {
   color: white;
   text-transform: uppercase;
   font-family: Arial, Helvetica, sans-serif;
@@ -64,12 +126,12 @@ main {
   margin: 0;
 }
 
-  .player-card figure img {
-    border-radius: 50%;
-  }
-  .player-card div img   {
-    padding: 5px;
-  }
+.player-card figure img {
+  border-radius: 50%;
+}
+.player-card div img {
+  padding: 5px;
+}
 
 #battlefield .bf-row div {
   width: 150px;
@@ -77,11 +139,15 @@ main {
   border: 1px solid greenyellow;
 }
 
-/* Footer */
+/* FOOTER -----------------------------------------------------*/
 footer {
+  display: flex;
+  border-top: 2px dashed white;
+  color: white;
+  opacity: .5;
   text-align: center;
   font-family: sans-serif;
-  background-image: url(/media/hackapez.png);
+  background-image: url(./media/hackapez.png);
   background-size: 10%;
   background-repeat: no-repeat;
   background-position-x: 100%;
@@ -103,12 +169,76 @@ footer li a::before {
   width: 1.5rem;
   height: 1.5rem;
 }
+[id^="player-"] {
+  display: none;
+}
 [href^="mailto"]::before {
-  content: '📧';
+  content: "📧";
 }
 [href*="github"]::before {
-  content: url(/media/_ionicons_svg_logo-github.svg);
+  content: url(./media/githubmark.png);
 }
 [href*="linkedin"]::before {
-  content: url(/media/_ionicons_svg_logo-linkedin.svg);
+  content: url(./media/_ionicons_svg_logo-linkedin.svg);
+}
+
+
+
+@media (min-width: 740px) and (max-width: 1260px) {
+  [id^="player-"] {
+    display: block;
+  }
+  main {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+  #battlefield {
+    flex-basis: 80%;
+    flex-direction: column-reverse;
+  }
+  #players {
+    order: -1;
+    flex-flow: row wrap;
+    margin: 0;
+  }
+  #logger-wrapper {
+    order: -2;
+  }
+  #logger {
+    padding: 0.2rem;
+  }
+}
+
+
+@media (min-width: 1260px) {
+  [id^="player-"] {
+    display: flex;
+    flex-direction: row;  
+  }
+  body {
+    height: 100vh;
+  }
+  main {
+    max-width: 1400px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+  #players {
+    order: -1;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+  #battlefield {
+    flex-basis: 30%;
+  }
+  .bf-row {
+    justify-content: center;
+  }
+
+  #logger-wrapper p {
+    font-size: .85rem;
+  }
 }

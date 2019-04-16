@@ -4,6 +4,7 @@ export class Player {
     this.name = name;
     this.emoji = emoji;
     this.color = color;
+    this.id = null;
     this.army = [];
 
     //Stats
@@ -18,7 +19,7 @@ export class Player {
     return true;
   }
   get totalUnits() {
-    return this.army.filter(this.isUnitAlive).length - 1;
+    return this.army.filter(this.isUnitAlive).length;
   }
 
   get armyReport() {
@@ -28,6 +29,4 @@ export class Player {
   isUnitAlive(unit) {
     return unit.status === 'active';
   }
-
-
 }
