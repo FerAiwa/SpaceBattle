@@ -18,8 +18,8 @@
     - Selection: Active units will be marked with a round colored border.
     - Unit dead: Blinks a few times before vanishing.
   - **Responsive design**
-    Implemented diferent views for mobile, tablet and large screens.
-    The game is designed to be optimal displayed in tablet or higher resolutions, yet now can be watched in 360px devices by hiding the unit counter. 
+    Implemented diferent views tablet and large screens.
+    The game is designed to be optimally displayed in tablet or higher resolutions, yet it could be watched in 360px devices by hiding the unit counter. 
   - **New units :** Added 2 new unit to the tier3 and tier4, to have more diversity.
 
 - **Major updates**
